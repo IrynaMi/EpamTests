@@ -1,14 +1,15 @@
-package massives;
+package task6;
 
 import java.util.Random;
 
 public class ArrayInitializer {
-	
-	public static void randomInit(int [] array, int max, int min) {
+	public static void randomInit(double [][] array, double min, double max) {
 		Random rand = new Random();
 		for (int i = 0; i < array.length; i++) {
-			array[i] = rand.nextInt(max - min + 1) + min;
+			for(int j = 0; j < array[i].length; j++) {
+				array[i][j] = min + (max - min) * rand.nextDouble();
+			}
+			
 		}
 	}
-
 }

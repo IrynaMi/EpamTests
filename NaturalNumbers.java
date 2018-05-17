@@ -1,6 +1,6 @@
 package task4;
 
-public class NaturalNumbers {
+public class NaturalNumber {
 	
 	static final int DIGIT = 10;
 	
@@ -33,9 +33,9 @@ public class NaturalNumbers {
 	
 	
 	static boolean isNumberSimple (int number) {
-		
-		for (int i = 3; i<=number; i++) {
-			if (number%2 == 0) {
+		int iterator = Math.sqrt(number);
+		for (int i = 3; i<=iterator; i++) {
+			if (number % 2 == 0) {
 				return false;
 			}
 		}

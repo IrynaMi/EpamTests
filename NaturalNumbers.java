@@ -89,6 +89,9 @@ public class NaturalNumbers {
 		return a;
 	}
 	
-	
+	public static int findNok(int a, int b) {
+		int nod = NaturalNumbers.findNok(a,b);
+		return a*b / nod;
+	}
 
 }

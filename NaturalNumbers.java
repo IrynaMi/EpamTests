@@ -34,14 +34,12 @@ public class NaturalNumbers {
 	
 	static boolean isNumberSimple (int number) {
 		
-		int counter = 0;
-		for (int i = 1; i<=number; i++) {
-			if (number%i == 0) {
-				counter++;
+		for (int i = 3; i<=number; i++) {
+			if (number%2 == 0) {
+				return false;
 			}
 		}
-		return counter > 2;
-		
+		return true;
 	}
 	
 	

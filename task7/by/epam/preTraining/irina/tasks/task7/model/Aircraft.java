@@ -4,19 +4,18 @@ public class Aircraft extends Vehicle {
 	
 	private String model;
 	
-	Aircraft(){
+	public Aircraft(){
 		
 	}
 	
-	Aircraft(double price, double maxSpeed, int numOfPassangers, String model){
+	public Aircraft(double price, double maxSpeed, int numOfPassangers, String model){
 		super(price, maxSpeed, numOfPassangers);
 		this.model = model;
 	}
 	
-	Aircraft(Aircraft craft){
+	public Aircraft(Aircraft craft){
 		
 	}
-	
 
 	public String getModel() {
 		return model;
@@ -28,9 +27,10 @@ public class Aircraft extends Vehicle {
 
 	@Override
 	void move(Vehicle craft) {
-		System.out.println();
+		System.out.println("Speed is " + craft.getMaxSpeed());
 		
 	}
+	
 	
 
 }

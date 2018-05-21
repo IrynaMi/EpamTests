@@ -10,7 +10,9 @@ public abstract class Vehicle {
 	}
 	
 	Vehicle(Vehicle v){
-		
+		this.price = v.price;
+		this.maxSpeed = v.maxSpeed;
+		this.numberOfPassangers = v.numberOfPassangers;
 	}
 	
 	Vehicle(double price, double maxSpeed, int numOfPassangers){

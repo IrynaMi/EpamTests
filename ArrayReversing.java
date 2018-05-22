@@ -2,7 +2,7 @@ package massives;
 
 public classArrayReversing {
 	
-	public static void reverseMassiv (int[] arr) {
+	public static void reverse (int[] arr) {
 		int temp = 0;
 		int iterJ = arr.length-1;
 		int interI = arr.length/2;

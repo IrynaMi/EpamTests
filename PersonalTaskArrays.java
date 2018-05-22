@@ -1,4 +1,4 @@
-package massives;
+
 
 public class PersonalTaskArrays {
 	
@@ -16,7 +16,7 @@ public class PersonalTaskArrays {
 	
 	public static double multOfNegativeElements (double [] array) {
 		double multOfNegative = 1;
-		for (int i = 0; i < PersonalTaskArrays.findIndexOfMaxElement(array); i++) {
+		for (int i = 0; i < findIndexOfMaxElement(array); i++) {
 			if(array[i] < 0) {
 				multOfNegative *=array[i];
 			}
@@ -26,7 +26,7 @@ public class PersonalTaskArrays {
 	
 	public static double sumOfPositiveElements (double [] array) {
 		double sumOfPositive = 0;
-		for (int i = 0; i < PersonalTaskArrays.findIndexOfMaxElement(array); i++) {
+		for (int i = 0; i < findIndexOfMaxElement(array); i++) {
 			if(array[i] > 0) {
 				sumOfPositive +=array[i];
 			}

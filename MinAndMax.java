@@ -1,4 +1,4 @@
-package massives;
+
 
 public class MinAndMax {
 	

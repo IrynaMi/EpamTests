@@ -26,8 +26,8 @@ public class Aircraft extends Vehicle {
 	}
 
 	@Override
-	void move(Vehicle craft) {
-		System.out.println("Speed is " + craft.getMaxSpeed());
+	public void move (Vehicle craft) {
+		System.out.println("Aircraft's " + ((Aircraft) craft).getModel() + " max speed is " + craft.getMaxSpeed());
 		
 	}
 	

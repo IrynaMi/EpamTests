@@ -3,7 +3,7 @@ package by.epam.preTraining.irina.tasks.task7.model;
 public class AircraftPark {
 	public int numOfCrafts;
 	public Aircraft[] crafts = new Aircraft[1];
-	Aircraft[] newCrafts = new Aircraft[crafts.length*2];
+	public Aircraft[] newCrafts;
 	
 	public int getNumOfCrafts() {
 		return numOfCrafts;
@@ -40,6 +40,7 @@ public class AircraftPark {
 		}
 		
 		if (numOfCrafts == crafts.length) {
+			newCrafts = new Aircraft[crafts.length*2];
 			System.arraycopy(crafts, 0, newCrafts, 0, crafts.length);
 			newCrafts[crafts.length] = craft;
 			numOfCrafts++;
@@ -96,14 +97,7 @@ public class AircraftPark {
 		
 	}
 	
-	public void showAllCrafts (Aircraft[] allCrafts) {
-		
-		for (int i = 0; i < allCrafts.length; i++) {
-			if(allCrafts[i]!= null) {
-				System.out.println("Model: " + allCrafts[i].getModel() + " || Price: " + allCrafts[i].getPrice());
-			} 
-		}
-	}
+	
 	
 	public Aircraft findTheFastestCraft (Aircraft[] allCrafts) {
 		Aircraft theFasterstCraft = allCrafts[0];

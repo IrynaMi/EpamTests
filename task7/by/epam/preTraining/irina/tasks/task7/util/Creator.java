@@ -13,12 +13,15 @@ public class Creator {
 	Aircraft craft4 = new Aircraft(30_543_345, 770, 160, "TU-154");
 	Aircraft craft5 = new Aircraft(43543, 700, 160, "TU-154");
 	
-	public void createPark() {
+	public AircraftPark createPark() {
 		park1.addCraftToPark(craft5);
 		park1.addCraftToPark(craft4);
 		park1.addCraftToPark(craft1);
 		park1.addCraftToPark(craft3);
-		Viewer.showAllCrafts(park1.addCraftToPark(craft2));
+		park1.addCraftToPark(craft2);
+		return park1;
 	}
+	
+	
 
 }

@@ -8,7 +8,9 @@ public class AircraftsParkController {
 	public static void main(String[] args) {
 		
 		Creator creator = new Creator();
-		creator.createPark();
+		AircraftPark park = creator.createPark();
+		Viewer.showAllCrafts(park);
+		System.out.println(park.numOfCrafts);
 	}
 
 }

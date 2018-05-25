@@ -1,6 +1,6 @@
 package by.epam.preTraining.irina.tasks.task7.model;
 
-public class Vehicle {
+public abcrtact class Vehicle {
 	private double price;
 	private double maxSpeed;
 	private int numberOfPassangers;
@@ -48,7 +48,7 @@ public class Vehicle {
 	
 
 	public void move(Vehicle v) {
-		System.out.println("Vehicle's max speed is " + v.maxSpeed);
+		
 	}
 
 

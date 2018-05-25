@@ -47,7 +47,7 @@ public abcrtact class Vehicle {
 	
 	
 
-	public avstract void move(Vehicle v);
+	public abstract void move(Vehicle v);
 
 
 	

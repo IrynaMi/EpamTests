@@ -25,7 +25,7 @@ public class AircraftsParkController {
 		Viewer.showCraft(park.deleteCraftById(1));
 		
 		System.out.println("Find Aircraft by ID: ");
-		Viewer.showCraft(park.getCraftById(1));
+		Viewer.showCraft(park.getVehicleById(1));
 		
 		System.out.println("======");
 		park.deleteAllCraftsFromPark();

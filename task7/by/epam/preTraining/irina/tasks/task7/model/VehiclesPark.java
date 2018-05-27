@@ -55,7 +55,7 @@ public class VehiclesPark {
 	}
 
 	// Add some aircrafts to park
-	public void addCraftsToPark(Vehicle[] newCrafts) {
+	public void addCraftsToPark(VehiclesPark park, Vehicle[] newCrafts) {
 		Vehicle[] newPark = new Vehicle[vehicles.length + newCrafts.length];
 		System.arraycopy(vehicles, 0, newPark, 0, vehicles.length);
 		System.arraycopy(newCrafts, 0, newPark, vehicles.length, newCrafts.length);

@@ -3,8 +3,8 @@ package by.epam.preTraining.irina.tasks.task7.controller;
 import java.util.Arrays;
 import by.epam.preTraining.irina.tasks.task7.model.VehiclesPark;
 import by.epam.preTraining.irina.tasks.task7.view.Viewer;
-import util.Creator;
-import util.CompareByPrice;
+import by.epam.preTraining.irina.tasks.task7.util.Creator;
+import by.epam.preTraining.irina.tasks.task7.util.CompareByPrice;
 
 public class AircraftsParkController {
 

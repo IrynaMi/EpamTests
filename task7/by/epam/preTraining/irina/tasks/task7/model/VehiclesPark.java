@@ -127,7 +127,7 @@ public class VehiclesPark {
 	}
 
 	// delete last element in Stack
-	public Vehicle[] deleteLastInVehicle(VehiclesPark park) {
+	public void deleteLastInVehicle(VehiclesPark park) {
 
 		if (!isParkEmpty(park)) {
 			for (int i = peakOfStack; i >= 0; i--) {
@@ -139,11 +139,10 @@ public class VehiclesPark {
 				}
 			}
 		}
-		return vehicles;
 	}
 
 	// delete first element in Queue and shift all elements to the beginning
-	public Vehicle[] deleteFirstInVehicle(VehiclesPark park) {
+	public void deleteFirstInVehicle(VehiclesPark park) {
 		int start = 0;
 		if (vehicles[start] != null) {
 			vehicles[start] = null;
@@ -161,7 +160,6 @@ public class VehiclesPark {
 				}
 			}
 		}
-		return vehicles;
 	}
 
 	//sorted by MAx Speed

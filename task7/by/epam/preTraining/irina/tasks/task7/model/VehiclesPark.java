@@ -3,11 +3,17 @@ package by.epam.preTraining.irina.tasks.task7.model;
 public class VehiclesPark {
 	private int numOfCrafts = 0;
 	private Vehicle[] vehicles;
-	private int peakOftack;
+	private int peakOfStack;
 
 	public VehiclesPark(int size) {
 		vehicles = new Vehicle[size];
-		peakOftack = -1;
+		peakOfStack = -1;
+	}
+
+	public VehiclesPark(VehiclesPark park) {
+		this.numOfCrafts = park.numOfCrafts;
+		this.peakOfStack = park.peakOfStack;
+		this.vehicles = park.vehicles;
 	}
 
 	public int getNumOfCrafts() {
@@ -27,22 +33,22 @@ public class VehiclesPark {
 	}
 
 	// check if Park is empty
-	public boolean isParkEmpty() {
-		return peakOftack == vehicles.length - 1;
+	public boolean isParkEmpty(VehiclesPark park) {
+		return numOfCrafts == 0;
 	}
 
 	// push element to container
 	public void addCraftToPark(Vehicle newVehicle) {
 		Vehicle[] newVehicles;
 
-		if (isParkEmpty()) {
+		if (!isParkEmpty(this)) {
 			newVehicles = new Vehicle[vehicles.length * 2];
 			System.arraycopy(vehicles, 0, newVehicles, 0, vehicles.length);
-			newVehicles[++peakOftack] = newVehicle;
+			newVehicles[++peakOfStack] = newVehicle;
 			numOfCrafts++;
 			vehicles = newVehicles;
 		} else {
-			vehicles[++peakOftack] = newVehicle;
+			vehicles[++peakOfStack] = newVehicle;
 			numOfCrafts++;
 		}
 
@@ -70,31 +76,33 @@ public class VehiclesPark {
 	// delete Aircraft from park by its index
 	public Vehicle deleteVehicleById(int id) {
 
-		if (!isParkEmpty() || id <= peakOftack) {
+		if (!isParkEmpty(this) || id <= peakOfStack) {
 			Vehicle deletedVehicle = vehicles[id];
 			vehicles[id] = null;
-			for (int i = id; i <= peakOftack; i++) {
-				for (int j = i + 1; i <= peakOftack;) {
+			for (int i = id; i <= peakOfStack; i++) {
+				for (int j = i + 1; i <= peakOfStack;) {
 					vehicles[i] = vehicles[j];
 					vehicles[j] = null;
 					break;
 				}
 			}
-			peakOftack--;
+			peakOfStack--;
 			return deletedVehicle;
 		}
 		return null;
 	}
 
-	public void deleteAllVehiclesFromPark() {
-		for (int i = 0; i <= peakOftack; i++) {
-			vehicles[i] = null;
-			numOfCrafts = 0;
+	public void deleteAllVehiclesFromPark(VehiclesPark park) {
+		if (!isParkEmpty(this)) {
+			for (int i = 0; i <= peakOfStack; i++) {
+				vehicles[i] = null;
+				numOfCrafts = 0;
+			}
 		}
 	}
 
 	public boolean isVehicleInThePark(Vehicle craft) {
-		if (!isParkEmpty()) {
+		if (!isParkEmpty(this)) {
 			for (int i = 0; i < vehicles.length; i++) {
 				if (vehicles[i].equals(craft)) {
 					return true;
@@ -105,25 +113,28 @@ public class VehiclesPark {
 	}
 
 	// find the Craft with max speed
-	public Vehicle findTheFastestCraft() {
-		Vehicle theFasterstVehicle = vehicles[0];
-		for (int i = 1; i < numOfCrafts; i++) {
-			if (vehicles[i].getMaxSpeed() > theFasterstVehicle.getMaxSpeed()) {
-				theFasterstVehicle = vehicles[i];
+	public Vehicle findTheFastestCraft(VehiclesPark park) {
+		Vehicle theFasterstVehicle = null;
+		if (!isParkEmpty(this)) {
+			theFasterstVehicle = vehicles[0];
+			for (int i = 1; i < numOfCrafts; i++) {
+				if (vehicles[i].getMaxSpeed() > theFasterstVehicle.getMaxSpeed()) {
+					theFasterstVehicle = vehicles[i];
+				}
 			}
 		}
 		return theFasterstVehicle;
 	}
 
 	// delete last element in Stack
-	public Vehicle[] deleteLastInVehicle(Vehicle[] vehicles) {
+	public Vehicle[] deleteLastInVehicle(VehiclesPark park) {
 
-		if (!isParkEmpty()) {
-			for (int i = peakOftack; i >= 0; i--) {
+		if (!isParkEmpty(park)) {
+			for (int i = peakOfStack; i >= 0; i--) {
 				if (vehicles[i] != null) {
 					vehicles[i] = null;
 					numOfCrafts--;
-					peakOftack--;
+					peakOfStack--;
 					break;
 				}
 			}
@@ -137,9 +148,9 @@ public class VehiclesPark {
 		if (vehicles[start] != null) {
 			vehicles[start] = null;
 			numOfCrafts--;
-			peakOftack--;
+			peakOfStack--;
 		}
-		if (!isParkEmpty()) {
+		if (!isParkEmpty(this)) {
 			for (int i = 0; i <= numOfCrafts; i++) {
 				for (int j = i + 1; j <= numOfCrafts;) {
 					if (vehicles[i] == null) {
@@ -151,6 +162,24 @@ public class VehiclesPark {
 			}
 		}
 		return vehicles;
+	}
+
+	//sorted by MAx Speed
+	public void sortVehiclesByMaxSpeed(VehiclesPark park) {
+		if (!isParkEmpty(this)) {
+			for (int i = 0; i < numOfCrafts; i++) {
+				double minSpeed = vehicles[i].getMaxSpeed();
+
+				for (int j = i + 1; j < numOfCrafts; j++) {
+					if (vehicles[j].getMaxSpeed() < minSpeed) {
+						Vehicle temp = vehicles[i];
+						vehicles[i] = vehicles[j];
+						vehicles[j] = temp;
+					}
+
+				}
+			}
+		}
 	}
 
 }

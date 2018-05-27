@@ -12,7 +12,7 @@ public class AircraftsParkController {
 		Viewer.showAllCrafts(park);
 		System.out.println(park.getNumOfCrafts());
 		System.out.println("After taken last craft: ");
-		park.deleteLastInVehicle(park.getCrafts());
+		park.deleteLastInVehicle(park.getVehicles());
 		Viewer.showAllCrafts(park);
 		System.out.println(park.getNumOfCrafts());
 		System.out.println("After taken first craft: ");
@@ -22,13 +22,13 @@ public class AircraftsParkController {
 		Viewer.showCraft(park.findTheFastestCraft());
 		
 		System.out.println("The folowing craft was deleted: ");
-		Viewer.showCraft(park.deleteCraftById(1));
+		Viewer.showCraft(park.deleteVehicleById(1));
 		
 		System.out.println("Find Aircraft by ID: ");
 		Viewer.showCraft(park.getVehicleById(1));
 		
 		System.out.println("======");
-		park.deleteAllCraftsFromPark();
+		park.deleteAllVehiclesFromPark();
 		Viewer.showAllCrafts(park);
 	}
 

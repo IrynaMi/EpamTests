@@ -1,8 +1,6 @@
 package by.epam.preTraining.irina.tasks.task7.controller;
 
 import java.util.Arrays;
-
-import by.epam.preTraining.irina.tasks.task7.model.Aircraft;
 import by.epam.preTraining.irina.tasks.task7.model.VehiclesPark;
 import by.epam.preTraining.irina.tasks.task7.view.Viewer;
 import util.Creator;
@@ -23,6 +21,11 @@ public class AircraftsParkController {
 		Viewer.showAllCrafts(temporaryPark);
 		
 		System.out.println("=========");
+		System.out.println("Sorted by Speed: ");
+		park.sortVehiclesByMaxSpeed(park);
+		Viewer.showAllCrafts(park);
+		
+		System.out.println("=========");
 		System.out.println("After taken last craft: ");
 		park.deleteLastInVehicle(park.getVehicles());
 		Viewer.showAllCrafts(park);
@@ -35,7 +38,7 @@ public class AircraftsParkController {
 		
 		System.out.println("=========");
 		System.out.println("The fastest craft in the park: ");
-		Viewer.showCraft(park.findTheFastestCraft());
+		Viewer.showCraft(park.findTheFastestCraft(park));
 		
 		System.out.println("=========");
 		System.out.println("The folowing craft was deleted: ");
@@ -46,7 +49,7 @@ public class AircraftsParkController {
 		Viewer.showCraft(park.getVehicleById(1));
 		
 		System.out.println("======");
-		park.deleteAllVehiclesFromPark();
+		park.deleteAllVehiclesFromPark(park);
 		Viewer.showAllCrafts(park);
 	}
 

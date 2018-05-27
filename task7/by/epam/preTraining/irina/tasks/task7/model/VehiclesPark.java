@@ -107,7 +107,7 @@ public class VehiclesPark {
 	// find the Craft with max speed
 	public Vehicle findTheFastestCraft() {
 		Vehicle theFasterstVehicle = vehicles[0];
-		for (int i = 1; i < numOfCrafts - 1; i++) {
+		for (int i = 1; i < numOfCrafts; i++) {
 			if (vehicles[i].getMaxSpeed() > theFasterstVehicle.getMaxSpeed()) {
 				theFasterstVehicle = vehicles[i];
 			}

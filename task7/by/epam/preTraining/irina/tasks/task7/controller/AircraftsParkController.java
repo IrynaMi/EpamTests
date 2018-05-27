@@ -27,7 +27,7 @@ public class AircraftsParkController {
 		
 		System.out.println("=========");
 		System.out.println("After taken last craft: ");
-		park.deleteLastInVehicle(park.getVehicles());
+		park.deleteLastInVehicle(park);
 		Viewer.showAllCrafts(park);
 		System.out.println(park.getNumOfCrafts());
 		

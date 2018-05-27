@@ -26,7 +26,7 @@ public class Viewer {
 			System.out.println("Model: " + ((Aircraft) vehicle).getModel() + " || Price: " + vehicle.getPrice() + " || Max Speed: " + 
 					vehicle.getMaxSpeed() + " || Number of passengers: " + vehicle.getNumberOfPassangers());
 		} else {
-			System.out.println("Aircraft noot found!");
+			System.out.println("Aircraft not found!");
 		}
 	}
 

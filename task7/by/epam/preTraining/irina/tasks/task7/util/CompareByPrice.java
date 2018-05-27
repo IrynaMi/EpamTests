@@ -1,4 +1,4 @@
-package util;
+package by.epam.preTraining.irina.tasks.task7.util;
 
 import java.util.Comparator;
 import by.epam.preTraining.irina.tasks.task7.model.Vehicle;

@@ -67,10 +67,8 @@ public class VehiclesPark {
 	public Vehicle getVehicleById(int id) {
 		if (vehicles[id] != null) {
 			return vehicles[id];
-		} else {
+		} 
 			return null;
-		}
-
 	}
 
 	// delete Aircraft from park by its index

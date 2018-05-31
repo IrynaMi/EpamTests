@@ -41,6 +41,12 @@ public class ParkManager {
 		SortingBySpeed sort = new SortingBySpeed();
 		sort.sortByMaxSpeed(park);
 	}
+	
+	// sort by price
+		public void sortParkByPrice(VehiclesPark park) {
+			SortingByPrice sort = new SortingByPrice();
+			sort.sortByPrice(park);
+		}
 
 	// delete last element from Park
 	public Vehicle deleteLastInVehicle(VehiclesPark park) {

@@ -1,18 +1,20 @@
 package by.epam.preTraining.irina.tasks.task7.controller;
 
 import java.util.Arrays;
+
 import by.epam.preTraining.irina.tasks.task7.model.VehiclesPark;
 import by.epam.preTraining.irina.tasks.task7.view.Viewer;
-import by.epam.preTraining.irina.tasks.task7.util.Creator;
-import by.epam.preTraining.irina.tasks.task7.util.CompareByPrice;
+import util.Creator;
+import util.CompareByPrice;
 
 public class AircraftsParkController {
 
 	public static void main(String[] args) {
 		Creator creator = new Creator();
 		VehiclesPark park = creator.createPark();
+		ParkManager manager = new ParkManager("1", park);
 		Viewer.showAllCrafts(park);
-		System.out.println(park.getNumOfCrafts());
+		Viewer.showNumOfVehicles(park);
 		
 		System.out.println("=========");
 		System.out.println("Sorted by Price: ");
@@ -22,23 +24,24 @@ public class AircraftsParkController {
 		
 		System.out.println("=========");
 		System.out.println("Sorted by Speed: ");
-		park.sortVehiclesByMaxSpeed(park);
+		manager.sortParkBySpeed(park);
 		Viewer.showAllCrafts(park);
 		
 		System.out.println("=========");
 		System.out.println("After taken last craft: ");
-		park.deleteLastInVehicle(park);
+		manager.deleteLastInVehicle(park);
 		Viewer.showAllCrafts(park);
-		System.out.println(park.getNumOfCrafts());
+		Viewer.showNumOfVehicles(park);
 		
 		System.out.println("=========");
 		System.out.println("After taken first craft: ");
-		park.deleteFirstInVehicle(park);
+		manager.deleteFirstInVehicle(park);
 		Viewer.showAllCrafts(park);
+		Viewer.showNumOfVehicles(park);
 		
 		System.out.println("=========");
 		System.out.println("The fastest craft in the park: ");
-		Viewer.showCraft(park.findTheFastestCraft(park));
+		Viewer.showCraft(manager.findTheFastestCraft(park));
 		
 		System.out.println("=========");
 		System.out.println("The folowing craft was deleted: ");

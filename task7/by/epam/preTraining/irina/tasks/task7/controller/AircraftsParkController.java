@@ -1,11 +1,9 @@
 package by.epam.preTraining.irina.tasks.task7.controller;
 
-import java.util.Arrays;
-
 import by.epam.preTraining.irina.tasks.task7.model.VehiclesPark;
 import by.epam.preTraining.irina.tasks.task7.view.Viewer;
 import util.Creator;
-import util.CompareByPrice;
+
 
 public class AircraftsParkController {
 
@@ -18,9 +16,8 @@ public class AircraftsParkController {
 		
 		System.out.println("=========");
 		System.out.println("Sorted by Price: ");
-		VehiclesPark temporaryPark = new VehiclesPark(park);
-		Arrays.sort(temporaryPark.getVehicles(), new CompareByPrice());
-		Viewer.showAllCrafts(temporaryPark);
+		manager.sortParkByPrice(park);
+		Viewer.showAllCrafts(park);
 		
 		System.out.println("=========");
 		System.out.println("Sorted by Speed: ");

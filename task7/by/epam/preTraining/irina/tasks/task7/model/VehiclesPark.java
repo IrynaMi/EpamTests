@@ -10,6 +10,10 @@ public class VehiclesPark {
 		peakOfStack = -1;
 	}
 
+	public VehiclesPark(Vehicle[] vehicles) {
+		peakOfStack = -1;
+	}
+
 	public VehiclesPark(VehiclesPark park) {
 		this.numOfCrafts = park.numOfCrafts;
 		this.peakOfStack = park.peakOfStack;
@@ -32,16 +36,62 @@ public class VehiclesPark {
 		this.vehicles = vehicles;
 	}
 
-	// check if Park is empty
-	public boolean isParkEmpty(VehiclesPark park) {
-		return numOfCrafts == 0;
+	public int getPeakOfStack() {
+		return peakOfStack;
 	}
 
-	// push element to container
-	public void addCraftToPark(Vehicle newVehicle) {
+	public void setPeakOfStack(int peakOfStack) {
+		this.peakOfStack = peakOfStack;
+	}
+
+	@Override
+	public String toString() {
+		Vehicle[] allCrafts = this.getVehicles();
+		StringBuilder result = new StringBuilder();
+		if (!isParkEmpty()) {
+			for (int i = 0; i < allCrafts.length; i++) {
+				if (allCrafts[i] != null) {
+					result = result.append("Model: " + ((Aircraft) allCrafts[i]).getModel() + " || Price: " + allCrafts[i].getPrice()
+							+ " || Max Speed: " + allCrafts[i].getMaxSpeed() + "\n");
+				}
+			}
+			return result.toString();
+		}
+		return "Park is empty!";
+
+	}
+
+	// check if Park is empty
+	public boolean isParkEmpty() {
+		return this.numOfCrafts == 0;
+	}
+
+	// find Vehicle by it's Index
+	public Vehicle getVehicleById(int id) {
+		if (vehicles[id] != null) {
+			return vehicles[id];
+		}
+		return null;
+	}
+
+	// find vehicle in the park
+	public boolean isVehicleInThePark(Vehicle craft) {
+
+		if (!isParkEmpty()) {
+			for (int i = 0; i < vehicles.length; i++) {
+				if (vehicles[i].equals(craft)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	// add vehicle to park
+	public void addVehicleToPark(Vehicle newVehicle) {
 		Vehicle[] newVehicles;
 
-		if (!isParkEmpty(this)) {
+		if (!isParkEmpty()) {
 			newVehicles = new Vehicle[vehicles.length * 2];
 			System.arraycopy(vehicles, 0, newVehicles, 0, vehicles.length);
 			newVehicles[++peakOfStack] = newVehicle;
@@ -54,7 +104,7 @@ public class VehiclesPark {
 
 	}
 
-	// Add some aircrafts to park
+	// add some vehicles to park
 	public void addCraftsToPark(VehiclesPark park, Vehicle[] newCrafts) {
 		Vehicle[] newPark = new Vehicle[vehicles.length + newCrafts.length];
 		System.arraycopy(vehicles, 0, newPark, 0, vehicles.length);
@@ -63,18 +113,10 @@ public class VehiclesPark {
 
 	}
 
-	// find Aircraft by its Index
-	public Vehicle getVehicleById(int id) {
-		if (vehicles[id] != null) {
-			return vehicles[id];
-		} 
-			return null;
-	}
-
-	// delete Aircraft from park by its index
+	// delete vehicle from park by its index
 	public Vehicle deleteVehicleById(int id) {
 
-		if (!isParkEmpty(this) || id <= peakOfStack) {
+		if (!isParkEmpty() && id <= peakOfStack && id >= 0) {
 			Vehicle deletedVehicle = vehicles[id];
 			vehicles[id] = null;
 			for (int i = id; i <= peakOfStack; i++) {
@@ -90,92 +132,14 @@ public class VehiclesPark {
 		return null;
 	}
 
+	// delete all vehicles from park
 	public void deleteAllVehiclesFromPark(VehiclesPark park) {
-		if (!isParkEmpty(this)) {
+		if (!isParkEmpty()) {
 			for (int i = 0; i <= peakOfStack; i++) {
 				vehicles[i] = null;
-				numOfCrafts = 0;
 			}
+			numOfCrafts = 0;
 		}
 	}
-
-	public boolean isVehicleInThePark(Vehicle craft) {
-		if (!isParkEmpty(this)) {
-			for (int i = 0; i < vehicles.length; i++) {
-				if (vehicles[i].equals(craft)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	// find the Craft with max speed
-	public Vehicle findTheFastestCraft(VehiclesPark park) {
-		Vehicle theFasterstVehicle = null;
-		if (!isParkEmpty(this)) {
-			theFasterstVehicle = vehicles[0];
-			for (int i = 1; i < numOfCrafts; i++) {
-				if (vehicles[i].getMaxSpeed() > theFasterstVehicle.getMaxSpeed()) {
-					theFasterstVehicle = vehicles[i];
-				}
-			}
-		}
-		return theFasterstVehicle;
-	}
-
-	// delete last element in Stack
-	public void deleteLastInVehicle(VehiclesPark park) {
-
-		if (!isParkEmpty(park)) {
-			for (int i = peakOfStack; i >= 0; i--) {
-				if (vehicles[i] != null) {
-					vehicles[i] = null;
-					numOfCrafts--;
-					peakOfStack--;
-					break;
-				}
-			}
-		}
-	}
-
-	// delete first element in Queue and shift all elements to the beginning
-	public void deleteFirstInVehicle(VehiclesPark park) {
-		int start = 0;
-		if (vehicles[start] != null) {
-			vehicles[start] = null;
-			numOfCrafts--;
-			peakOfStack--;
-		}
-		if (!isParkEmpty(this)) {
-			for (int i = 0; i <= numOfCrafts; i++) {
-				for (int j = i + 1; j <= numOfCrafts;) {
-					if (vehicles[i] == null) {
-						vehicles[i] = vehicles[j];
-						vehicles[j] = null;
-					}
-					break;
-				}
-			}
-		}
-	}
-
-	//sorted by MAx Speed
-	public void sortVehiclesByMaxSpeed(VehiclesPark park) {
-		if (!isParkEmpty(this)) {
-			for (int i = 0; i < numOfCrafts; i++) {
-				double minSpeed = vehicles[i].getMaxSpeed();
-
-				for (int j = i + 1; j < numOfCrafts; j++) {
-					if (vehicles[j].getMaxSpeed() < minSpeed) {
-						Vehicle temp = vehicles[i];
-						vehicles[i] = vehicles[j];
-						vehicles[j] = temp;
-					}
-
-				}
-			}
-		}
-	}
-
+	
 }

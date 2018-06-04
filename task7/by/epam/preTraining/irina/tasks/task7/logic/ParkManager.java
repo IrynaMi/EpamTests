@@ -81,7 +81,7 @@ public class ParkManager {
 	// delete first element from Park
 	public Vehicle deleteFirstInVehicle(VehiclesPark park) {
 		Queue queue = new Queue();
-		Vehicle deletedVehicle = queue.deleteFirstInVehicle(park);
+		Vehicle deletedVehicle = queue.dequeue(park);
 		return deletedVehicle;
 	}
 

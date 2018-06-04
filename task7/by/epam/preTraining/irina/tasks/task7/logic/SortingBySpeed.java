@@ -4,7 +4,8 @@ import by.epam.preTraining.irina.tasks.task7.model.Vehicle;
 import by.epam.preTraining.irina.tasks.task7.model.VehiclesPark;
 
 public class SortingBySpeed {
-	// sort by Max Speed
+	
+	// selection sort by MAx Speed
 		public void sortByMaxSpeed (VehiclesPark park) {
 			Vehicle[] vehicles = park.getVehicles();
 			int numOfCrafts = park.getNumOfCrafts();

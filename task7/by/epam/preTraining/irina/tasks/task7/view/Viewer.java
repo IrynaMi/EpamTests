@@ -1,5 +1,4 @@
 package by.epam.preTraining.irina.tasks.task7.view;
-
 import by.epam.preTraining.irina.tasks.task7.model.Vehicle;
 import by.epam.preTraining.irina.tasks.task7.model.VehiclesPark;
 
@@ -13,7 +12,8 @@ public class Viewer {
 		System.out.println(vehicle);
 	}
 	
-	public static void showNumOfVehicles(VehiclesPark park) {
-		System.out.println("Total amount of vehicles: " + park.getNumOfCrafts() + "\n");
+	public static void showNumOfVehicles(int num) {
+		System.out.println("Amount: " + num + "\n");
 	}
+
 }

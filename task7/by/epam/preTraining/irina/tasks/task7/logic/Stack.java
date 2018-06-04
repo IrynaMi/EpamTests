@@ -11,6 +11,9 @@ public class Stack {
 	
 	//add vehicle to the end of the stack
 	public void push(VehiclesPark park, Vehicle newVehicle) {
+		peakOfStack = park.getPeakOfStack();
+		numOfCrafts = park.getNumOfCrafts();
+		vehicles = park.getVehicles();
 		Vehicle[] newVehicles;
 
 		if (!park.isParkEmpty()) {

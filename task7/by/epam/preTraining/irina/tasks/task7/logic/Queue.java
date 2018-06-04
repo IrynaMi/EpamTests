@@ -55,14 +55,25 @@ public class Queue {
 	}
 	
 	// get first element from the queue
-			public Vehicle peek(VehiclesPark park) {
-				vehicles = park.getVehicles();
-				return vehicles[0];
-			}
+	public Vehicle peek(VehiclesPark park) {
+		try {
+			vehicles = park.getVehicles();
+			return vehicles[0];
+		} catch (NullPointerException e) {
+			System.out.println("Queue is empty!");
+			return null;
+		}
+		
+	}
 			
 	// quantity of elements in queue
 	public int getSize(VehiclesPark park) {
-			return (park.getVehicles()).length - 1;
+		try {
+			return (park.getVehicles()).length;
+		} catch (NullPointerException e) {
+			System.out.println("Queue is empty!");
+			return 0;
+		}	
 	}
 	
 	// is queue empty

@@ -1,4 +1,4 @@
-package by.epam.preTraining.irina.tasks.task7.logic;
+ package by.epam.preTraining.irina.tasks.task7.logic;
 
 
 import by.epam.preTraining.irina.tasks.task7.model.Vehicle;
@@ -48,16 +48,24 @@ public class Stack {
 		
 		// get element from the top of the stack
 		public Vehicle peek(VehiclesPark park) {
-			peakOfStack = park.getPeakOfStack();
-			vehicles = park.getVehicles();
-			return vehicles[peakOfStack];
-			
+			try {
+				peakOfStack = park.getPeakOfStack();
+				vehicles = park.getVehicles();
+				return vehicles[peakOfStack];
+			} catch (NullPointerException e) {
+				System.out.println("Queue is empty!");
+				return null;
+			}
 		}
 
 		// quantity of elements in stack
 		public int getSize(VehiclesPark park) {
-			return park.getVehicles().length-1;
-			
+			try {
+				return park.getVehicles().length;
+			} catch (NullPointerException e) {
+				System.out.println("Queue is empty!");
+				return 0;
+			}
 		}
 		
 		// is stack empty

@@ -1,5 +1,6 @@
 package by.epam.preTraining.irina.tasks.task7.controller;
 
+import by.epam.preTraining.irina.tasks.task7.logic.ParkManager;
 import by.epam.preTraining.irina.tasks.task7.model.VehiclesPark;
 import by.epam.preTraining.irina.tasks.task7.view.Viewer;
 import util.Creator;
@@ -12,7 +13,7 @@ public class AircraftsParkController {
 		VehiclesPark park = creator.createPark();
 		ParkManager manager = new ParkManager("1", park);
 		Viewer.showAllCrafts(park);
-		Viewer.showNumOfVehicles(park);
+		Viewer.showNumOfVehicles(park.getNumOfCrafts());
 		
 		System.out.println("=========");
 		System.out.println("Sorted by Price: ");
@@ -25,16 +26,32 @@ public class AircraftsParkController {
 		Viewer.showAllCrafts(park);
 		
 		System.out.println("=========");
-		System.out.println("After taken last craft: ");
-		manager.deleteLastInVehicle(park);
+		System.out.println("After taken last craft in Stack: ");
+		manager.deleteLastInStack(park);
 		Viewer.showAllCrafts(park);
-		Viewer.showNumOfVehicles(park);
+		Viewer.showNumOfVehicles(park.getNumOfCrafts());
+		
+		System.out.println("=========");
+		System.out.println("Peek of Stack: ");
+		Viewer.showCraft(manager.getPeekOfStack(park));
+		
+		System.out.println("=========");
+		System.out.println("Size of Stack: ");
+		Viewer.showNumOfVehicles(manager.getSizeOfStack(park));
+		
+		System.out.println("=========");
+		System.out.println("Is Stack Empy: ");
+		System.out.println(manager.isStackEmpty(park));
+		
+		System.out.println("=========");
+		System.out.println("Is Stack Full: ");
+		System.out.println(manager.isStackFull(park));
 		
 		System.out.println("=========");
 		System.out.println("After taken first craft: ");
 		manager.deleteFirstInVehicle(park);
 		Viewer.showAllCrafts(park);
-		Viewer.showNumOfVehicles(park);
+		Viewer.showNumOfVehicles(park.getNumOfCrafts());
 		
 		System.out.println("=========");
 		System.out.println("The fastest craft in the park: ");
